@@ -3,392 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevPortfolio | Espectacular</title>
+    <title>DevPortfolio | Clean & Minimal</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Outfit for a modern tech look -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter and Playfair Display for an editorial look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #020617; /* Slate 950 */
-            color: #f8fafc;
-            overflow-x: hidden;
-        }
-
-        /* Custom Animations */
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-
-        .animate-blob {
-            animation: blob 7s infinite;
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa; /* Very light gray/off-white */
+            color: #111827; /* Gray 900 */
         }
         
-        .animation-delay-2000 {
-            animation-delay: 2s;
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
         }
-
-        .animation-delay-4000 {
-            animation-delay: 4s;
-        }
-
-        /* Glassmorphism Card Style */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(139, 92, 246, 0.5); /* Violet 500 */
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
-        }
-
-        /* Text Gradient */
-        .text-gradient {
-            background: linear-gradient(to right, #38bdf8, #8b5cf6, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Fade In Animation for elements */
-        @keyframes fadeIn {
+        
+        /* Subtle reveal animation for cards */
+        @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
+        .fade-up {
+            animation: fadeUp 0.6s ease-out forwards;
             opacity: 0;
+        }
+
+        /* Styling for the card image zoom effect */
+        .card-img-container overflow-hidden {
+            border-radius: 1rem 1rem 0 0;
         }
     </style>
 </head>
-<body class="antialiased relative min-h-screen flex flex-col">
-
-    <!-- Ambient Background Blobs -->
-    <div class="fixed w-full h-full top-0 left-0 z-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob"></div>
-        <div class="absolute top-0 -right-4 w-72 h-72 bg-sky-500 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-4000"></div>
-    </div>
+<body class="antialiased flex flex-col min-h-screen">
 
     <!-- Header / Navbar -->
-    <header class="fixed w-full top-0 z-50 glass-card border-b-0 border-white/10">
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 cursor-pointer hover:scale-105 transition-transform">
-                    <span class="text-3xl font-extrabold text-white tracking-tighter">
-                        Dev<span class="text-gradient">Portfolio</span>
-                    </span>
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold tracking-tight text-gray-900 font-playfair italic">
+                        Studio<span class="text-gray-400 not-italic">.</span>
+                    </a>
                 </div>
-                <nav class="hidden md:flex space-x-10">
-                    <a href="#inicio" class="text-slate-300 hover:text-white transition-colors font-medium">Inicio</a>
-                    <a href="#proyectos" class="text-slate-300 hover:text-white transition-colors font-medium">Proyectos</a>
-                    <a href="#contacto" class="text-slate-300 hover:text-white transition-colors font-medium">Contacto</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Inicio</a>
+                    <a href="#proyectos" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Proyectos</a>
+                    <a href="#servicios" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Servicios</a>
                 </nav>
                 <div class="hidden md:block">
-                    <button class="bg-white/10 hover:bg-white/20 text-white px-6 py-2.5 rounded-full font-medium transition-all backdrop-blur-md border border-white/10 hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                        Contrátame
-                    </button>
+                    <a href="#contacto" class="bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium px-6 py-2.5 rounded-full transition-colors shadow-sm">
+                        Hablemos
+                    </a>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="relative z-10 pt-40 pb-20 flex items-center justify-center min-h-[80vh]">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 border-white/10 text-sm font-medium text-sky-300">
-                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                Disponible para nuevos proyectos
-            </div>
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 leading-tight">
-                Construyendo el futuro <br class="hidden md:block" />
-                <span class="text-gradient">línea por línea</span>
+    <section id="inicio" class="pt-32 pb-20 md:pt-40 md:pb-28 bg-[#fafafa]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight fade-up font-playfair">
+                Diseño digital <br class="hidden md:block" /> 
+                con <span class="text-gray-400 font-light italic">propósito y elegancia.</span>
             </h1>
-            <p class="mt-6 text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed">
-                Desarrollador Full Stack & Diseñador UI/UX creando experiencias digitales inmersivas, escalables y visualmente espectacales.
+            <p class="mt-4 text-lg md:text-xl text-gray-500 max-w-2xl mx-auto font-light fade-up leading-relaxed" style="animation-delay: 0.1s;">
+                Creamos experiencias web memorables, rápidas y escalables. 
+                Donde la estética editorial se encuentra con la ingeniería de alto rendimiento para marcas de lujo.
             </p>
-            <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#proyectos" class="px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white rounded-full font-semibold transition-all hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] transform hover:-translate-y-1">
-                    Explorar Trabajos
-                </a>
-                <a href="#contacto" class="px-8 py-4 glass-card text-white rounded-full font-semibold transition-all hover:bg-white/10">
-                    Ver Currículum
+            <div class="mt-10 fade-up" style="animation-delay: 0.2s;">
+                <a href="#proyectos" class="inline-flex items-center justify-center bg-gray-900 text-white hover:bg-gray-800 px-8 py-3.5 rounded-full text-base font-medium transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                    Ver Proyectos
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Main Content: Projects Grid -->
-    <main id="proyectos" class="relative z-10 flex-grow py-24 bg-black/20 backdrop-blur-3xl border-t border-white/5">
+    <!-- Projects Grid Section -->
+    <main id="proyectos" class="flex-grow py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="mb-16 text-center md:text-left fade-in" style="animation-delay: 0.2s;">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Proyectos <span class="text-slate-500 font-light">Destacados</span></h2>
-                <div class="h-1 w-24 bg-gradient-to-r from-sky-400 to-violet-500 rounded-full md:mx-0 mx-auto"></div>
+            <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between fade-up">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-playfair">Trabajos Seleccionados</h2>
+                    <p class="mt-3 text-gray-500 font-light">Una colección curada de proyectos que definen nuestra visión estética.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <span class="text-sm font-medium text-gray-400 uppercase tracking-widest">2024 — 2026</span>
+                </div>
             </div>
 
-            <!-- Grid responsivo -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- CSS Grid for Projects (3 columns desktop for larger, more elegant imagery) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 gap-y-16">
 
                 <!-- Proyecto 1 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col fade-in" style="animation-delay: 0.3s;">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-indigo-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="E-Commerce Tech" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full" style="animation-delay: 0.1s;">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Moda minimalista" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500"></div>
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">Nova E-Commerce</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">React</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">E-Commerce</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Plataforma de compras next-gen con carrito persistente, pasarela de pagos integrada y panel de analíticas en tiempo real.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-indigo-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Aura Maison</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Rediseño integral de la plataforma de comercio electrónico para esta marca de moda parisina. Nos enfocamos en una experiencia de usuario fluida, imágenes a pantalla completa y un proceso de pago invisible que incrementó la conversión en un 40%.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 2 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col fade-in" style="animation-delay: 0.4s;">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-pink-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Abstract Neon App" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full" style="animation-delay: 0.2s;">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard UI" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-pink-400 transition-colors">SynthWave Music</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Vue.js</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">FinTech</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Reproductor musical con visualizador de audio en WebGL interactivo. Sincronización en la nube y modo offline.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-pink-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Nova Wealth</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Panel de análisis financiero y gestión de patrimonio de alto nivel. Transformamos datos complejos en visualizaciones interactivas elegantes, implementando un sofisticado modo oscuro para reducir la fatiga visual de los analistas.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 3 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col fade-in" style="animation-delay: 0.5s;">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-sky-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full" style="animation-delay: 0.3s;">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Interiorismo moderno" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-sky-400 transition-colors">DataCore Admin</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Angular</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Arquitectura</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Panel de control B2B con gráficos interactivos D3.js, gestión de usuarios avanzada y exportación de reportes PDF.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-sky-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Estudio Lumina</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Portafolio inmersivo para un reconocido estudio de arquitectura en Madrid. El diseño prioriza el uso del espacio en blanco para permitir que las fotografías de los interiores respiren, logrando una navegación casi museística.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 4 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col fade-in" style="animation-delay: 0.6s;">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-emerald-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Architecture Modern" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full" style="animation-delay: 0.4s;">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Spa y bienestar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Lumina Estate</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Next.js</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Mobile App</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Plataforma inmobiliaria de lujo. SEO ultrarrápido, recorridos virtuales 360° y sistema de citas integrado.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Vitality Retreat</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Aplicación móvil diseñada para el seguimiento de la salud mental y reservas de retiros de bienestar. Desarrollamos una interfaz limpia con tonos tierra y animaciones suaves para transmitir calma desde el primer tap.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 5 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-violet-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Abstract 3D" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" alt="Paisaje natural" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-violet-400 transition-colors">Sphere 3D Exp.</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Three.js</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Editorial</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Landing page inmersiva con renderizado de modelos 3D en tiempo real, efectos de partículas y físicas en navegador.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-violet-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Nomad Journal</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Revista digital de viajes orientada al turismo de lujo y exploración sostenible. Implementamos un diseño tipográfico exquisito que simula la maquetación de la prensa impresa, garantizando lectura sin distracciones.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 6 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-yellow-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" alt="Mobile App" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80" alt="Smart Home" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">TaskFlow App</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">React Native</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">IoT / UI</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Aplicación móvil de gestión de tareas y pomodoro. Animaciones fluidas, notificaciones push y modo oscuro nativo.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-yellow-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Nexus Habitat</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Interfaz centralizada para sistemas de automatización del hogar. Diseñamos un panel de control que simplifica la domótica avanzada (clima, seguridad, iluminación) haciéndola accesible mediante controles táctiles muy pulidos.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 7 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-red-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80" alt="Cyberpunk City" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=800&q=80" alt="Branding Mockup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-red-400 transition-colors">Neon City Game</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Phaser.js</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Branding</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Juego web 2D de scroll lateral con estética cyberpunk. Implementación de motor de físicas y multijugador básico con Socket.io.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-red-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Atelier Kinetik</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Identidad visual e implementación digital para una firma consultora. Creamos un lenguaje de marca fundamentado en la geometría pura, papelería premium y un sitio web institucional sobrio y altamente profesional.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 8 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-cyan-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Code Screens" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" alt="Camara Vintage" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Dev Snippets API</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Node.js</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">SaaS</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Backend RESTful para compartir fragmentos de código. Autenticación JWT, rate limiting y base de datos MongoDB optimizada.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Lens Collective</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Plataforma exclusiva para fotógrafos de bellas artes. Diseñamos galerías asimétricas para destacar el trabajo visual y construimos un sistema robusto de monetización de impresiones de tiraje limitado.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 9 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-fuchsia-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&w=800&q=80" alt="VR Tech" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Espacio de trabajo moderno" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-fuchsia-400 transition-colors">Metaverse Hub</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">WebXR</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">B2B Web</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Portal web de realidad virtual accesible desde navegadores Oculus. Galerías de arte inmersivas e interacción mediante mandos.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-fuchsia-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Acme Workspaces</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Transformación digital para un proveedor de espacios de coworking boutique. El resultado es un sitio de carga ultra-rápida, reserva de oficinas integradas y un recorrido fotográfico 3D virtual.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 10 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-blue-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Server Data" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Gastronomía limpia" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Cloud Monitor</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Python</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Hospitality</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Herramienta CLI y Web para monitorizar la salud de servidores Linux. Despliegue mediante Docker y alertas por Telegram.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Cuisine Étoile</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Presencia online para un restaurante galardonado con estrella Michelin. Capturamos la esencia culinaria a través de vídeos cinemáticos en bucle y un sofisticado motor de reservas a medida.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 11 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-orange-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80" alt="Dark Abstract" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Bienes raíces lujo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">Crypto Tracker</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">SvelteKit</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Real Estate</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Seguimiento de precios de criptomonedas en tiempo real vía WebSockets. Gráficos de velas con TradingView Lightweight Charts.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-orange-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Haven Properties</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Plataforma para bienes raíces de lujo. Diseñamos un potente buscador que se siente invisible, dejando todo el protagonismo visual a las propiedades. El proyecto aumentó las captaciones exclusivas.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 12 -->
-                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                    <div class="relative h-56 overflow-hidden">
-                        <div class="absolute inset-0 bg-lime-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Workspace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <article class="group cursor-pointer fade-up flex flex-col h-full">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80" alt="Fitness y Deporte" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
-                    <div class="p-6 flex flex-col flex-grow relative z-20">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-lime-400 transition-colors">Collab Space</h3>
-                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">WebRTC</span>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Lifestyle</span>
                         </div>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
-                            Espacio de trabajo virtual para equipos remotos con videollamadas p2p integradas y pizarras colaborativas en vivo.
-                        </p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-lime-400 transition-colors">
-                            Ver Proyecto 
-                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors font-playfair mb-3">Zenith Athletics</h3>
+                        <p class="text-sm text-gray-500 mb-6 font-light leading-relaxed flex-grow">Ecosistema digital para un club de entrenamiento de alto rendimiento. Unificamos la reserva de clases, seguimiento de métricas corporales y tienda de merchandising bajo un solo techo digital elegante.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-gray-900 uppercase tracking-wider group-hover:text-gray-500 transition-colors mt-auto">
+                            Ver proyecto <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </article>
@@ -398,30 +310,246 @@
     </main>
 
     <!-- Footer -->
-    <footer id="contacto" class="relative z-10 border-t border-white/10 bg-black/40 backdrop-blur-xl py-12 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0 text-center md:text-left">
-                <span class="text-3xl font-extrabold tracking-tighter">
-                    Dev<span class="text-gradient">Portfolio</span>
-                </span>
-                <p class="mt-3 text-slate-500 text-sm font-light max-w-xs">Creando el futuro web con diseño moderno y rendimiento extremo.</p>
-            </div>
-            
-            <div class="flex gap-4">
-                <!-- Redes sociales estilizadas -->
-                <a href="#" class="p-3 glass-card rounded-full hover:text-sky-400 transition-colors hover:-translate-y-1">
-                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-                </a>
-                <a href="#" class="p-3 glass-card rounded-full hover:text-white transition-colors hover:-translate-y-1">
-                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
-                </a>
-                <a href="#" class="p-3 glass-card rounded-full hover:text-indigo-400 transition-colors hover:-translate-y-1">
-                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
+    <footer id="contacto" class="bg-[#fafafa] border-t border-gray-200 pt-16 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-2xl font-bold tracking-tight text-gray-900 mb-4 inline-block font-playfair italic">
+                        Studio<span class="text-gray-400 not-italic">.</span>
+                    </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 2 -->
+                <article class="group cursor-pointer fade-up" style="animation-delay: 0.2s;">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard UI" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">FinDash Pro</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">SaaS</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">Panel de análisis financiero con gráficos interactivos y modo claro/oscuro para empresas fintech.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 3 -->
+                <article class="group cursor-pointer fade-up" style="animation-delay: 0.3s;">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=800&q=80" alt="Arquitectura moderna" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Lumina Arch</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Portfolio</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">Portafolio inmersivo para estudio de arquitectura, destacando grandes tipografías y fotografías de alta resolución.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 4 -->
+                <article class="group cursor-pointer fade-up" style="animation-delay: 0.4s;">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Aplicación de salud" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Vitality App</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Mobile</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">Aplicación móvil para seguimiento de bienestar y salud mental con una interfaz suave y relajante.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 5 -->
+                <article class="group cursor-pointer fade-up">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" alt="Viajes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Nomad Stories</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Blog</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">Blog de viajes editorial con un diseño centrado en el contenido fotográfico y lectura sin distracciones.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 6 -->
+                <article class="group cursor-pointer fade-up">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1556910103-1c02745a872f?auto=format&fit=crop&w=800&q=80" alt="Smart Home" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Nexus Home</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">IoT UI</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">Interfaz de control para hogares inteligentes, unificando iluminación, clima y seguridad en una sola pantalla.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 7 -->
+                <article class="group cursor-pointer fade-up">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=800&q=80" alt="Branding Mockup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Kinetik Brand</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Branding</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">Identidad visual completa y sitio web corporativo para una agencia de marketing digital de vanguardia.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 8 -->
+                <article class="group cursor-pointer fade-up">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" alt="Camara Vintage" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Lens Grid</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Web</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">Plataforma comunitaria para fotógrafos. Galerías asimétricas y sistema de monetización de impresiones.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 9 -->
+                <article class="group cursor-pointer fade-up">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="Educación y libros" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">LearnSpace</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">E-Learning</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">Portal educativo limpio e intuitivo. Seguimiento de progreso, foros integrados y diseño accesible.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 10 -->
+                <article class="group cursor-pointer fade-up">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Gastronomía limpia" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Maison Bistro</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Web</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">Sitio web de restaurante de alta cocina con sistema de reservas en tiempo real y menú digital interactivo.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 11 -->
+                <article class="group cursor-pointer fade-up">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Interiorismo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Haven Real Estate</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Plataforma</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">Buscador inmobiliario minimalista. Filtros avanzados, integración de mapas y diseño enfocado en la propiedad.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Proyecto 12 -->
+                <article class="group cursor-pointer fade-up">
+                    <div class="relative bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1526506114621-e945e4125fce?auto=format&fit=crop&w=800&q=80" alt="Fitness y Deporte" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Zenith Fit</h3>
+                            <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">Mobile</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3 line-clamp-2">App de fitness y rutinas personalizadas. Gráficos de rendimiento limpios y animaciones de ejercicios.</p>
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Ver caso de estudio <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-white/5 text-center text-slate-600 text-sm">
-            &copy; 2026 DevPortfolio. Diseñado con pasión.
+    </main>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-[#fafafa] border-t border-gray-200 pt-16 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-2xl font-bold tracking-tight text-gray-900 mb-4 inline-block">
+                        studio<span class="text-gray-400">.</span>
+                    </a>
+                    <p class="text-gray-500 text-sm max-w-sm">
+                        Transformando ideas complejas en experiencias digitales simples, elegantes y funcionales.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">Enlaces</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#inicio" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Inicio</a></li>
+                        <li><a href="#proyectos" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Proyectos</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">Contacto</h4>
+                    <ul class="space-y-3">
+                        <li><a href="mailto:hola@studio.com" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">hola@studio.com</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Twitter</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Dribbble</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-gray-400">
+                    &copy; 2026 Studio. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-xs text-gray-400 hover:text-gray-900 transition-colors">Privacidad</a>
+                    <a href="#" class="text-xs text-gray-400 hover:text-gray-900 transition-colors">Términos</a>
+                </div>
+            </div>
         </div>
     </footer>
 
