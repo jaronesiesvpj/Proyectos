@@ -1,40 +1,103 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio | Proyectos Destacados</title>
+    <title>DevPortfolio | Espectacular</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Outfit for a modern tech look -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Slate 50 */
+            font-family: 'Outfit', sans-serif;
+            background-color: #020617; /* Slate 950 */
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Custom Animations */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(139, 92, 246, 0.5); /* Violet 500 */
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Fade In Animation for elements */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
         }
     </style>
 </head>
-<body class="text-slate-800 flex flex-col min-h-screen">
+<body class="antialiased relative min-h-screen flex flex-col">
+
+    <!-- Ambient Background Blobs -->
+    <div class="fixed w-full h-full top-0 left-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-sky-500 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-4000"></div>
+    </div>
 
     <!-- Header / Navbar -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="fixed w-full top-0 z-50 glass-card border-b-0 border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-bold text-indigo-600">DevPortfolio</a>
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 cursor-pointer hover:scale-105 transition-transform">
+                    <span class="text-3xl font-extrabold text-white tracking-tighter">
+                        Dev<span class="text-gradient">Portfolio</span>
+                    </span>
                 </div>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#inicio" class="text-slate-600 hover:text-indigo-600 px-3 py-2 font-medium transition-colors">Inicio</a>
-                    <a href="#proyectos" class="text-indigo-600 px-3 py-2 font-medium transition-colors">Proyectos</a>
-                    <a href="#contacto" class="text-slate-600 hover:text-indigo-600 px-3 py-2 font-medium transition-colors">Contacto</a>
+                <nav class="hidden md:flex space-x-10">
+                    <a href="#inicio" class="text-slate-300 hover:text-white transition-colors font-medium">Inicio</a>
+                    <a href="#proyectos" class="text-slate-300 hover:text-white transition-colors font-medium">Proyectos</a>
+                    <a href="#contacto" class="text-slate-300 hover:text-white transition-colors font-medium">Contacto</a>
                 </nav>
-                <div class="md:hidden flex items-center">
-                    <!-- Menú móvil (hamburguesa - solo visual para este ejemplo) -->
-                    <button class="text-slate-500 hover:text-slate-900 focus:outline-none p-2">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
+                <div class="hidden md:block">
+                    <button class="bg-white/10 hover:bg-white/20 text-white px-6 py-2.5 rounded-full font-medium transition-all backdrop-blur-md border border-white/10 hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                        Contrátame
                     </button>
                 </div>
             </div>
@@ -42,189 +105,290 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="bg-white py-20 border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-                Mis Proyectos Destacados
+    <section id="inicio" class="relative z-10 pt-40 pb-20 flex items-center justify-center min-h-[80vh]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 border-white/10 text-sm font-medium text-sky-300">
+                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                Disponible para nuevos proyectos
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 leading-tight">
+                Construyendo el futuro <br class="hidden md:block" />
+                <span class="text-gradient">línea por línea</span>
             </h1>
-            <p class="mt-4 text-xl text-slate-500 max-w-2xl mx-auto">
-                Explora una selección de mis trabajos más recientes en desarrollo web, diseño UI/UX y aplicaciones móviles. Construyendo soluciones digitales innovadoras.
+            <p class="mt-6 text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed">
+                Desarrollador Full Stack & Diseñador UI/UX creando experiencias digitales inmersivas, escalables y visualmente espectacales.
             </p>
+            <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#proyectos" class="px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white rounded-full font-semibold transition-all hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] transform hover:-translate-y-1">
+                    Explorar Trabajos
+                </a>
+                <a href="#contacto" class="px-8 py-4 glass-card text-white rounded-full font-semibold transition-all hover:bg-white/10">
+                    Ver Currículum
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Main Content: Projects Grid -->
-    <main id="proyectos" class="flex-grow py-16">
+    <main id="proyectos" class="relative z-10 flex-grow py-24 bg-black/20 backdrop-blur-3xl border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Grid de 12 proyectos -->
-            <!-- Usamos Grid responsivo: 1 columna en móviles, 2 en tablets, 3 en desktop, 4 en pantallas grandes -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div class="mb-16 text-center md:text-left fade-in" style="animation-delay: 0.2s;">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Proyectos <span class="text-slate-500 font-light">Destacados</span></h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-sky-400 to-violet-500 rounded-full md:mx-0 mx-auto"></div>
+            </div>
+
+            <!-- Grid responsivo -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
                 <!-- Proyecto 1 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/4f46e5/ffffff?text=E-Commerce" alt="Proyecto E-Commerce" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Plataforma E-Commerce</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Tienda en línea completa desarrollada con React y Node.js. Incluye pasarela de pago, carrito de compras y panel de administración.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col fade-in" style="animation-delay: 0.3s;">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-indigo-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="E-Commerce Tech" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">Nova E-Commerce</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">React</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Plataforma de compras next-gen con carrito persistente, pasarela de pagos integrada y panel de analíticas en tiempo real.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-indigo-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 2 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/0ea5e9/ffffff?text=App+Clima" alt="App del Clima" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">App Meteorológica</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Aplicación web progresiva (PWA) que muestra el clima en tiempo real consumiendo la API de OpenWeatherMap. Diseñada con Vue.js.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col fade-in" style="animation-delay: 0.4s;">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-pink-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Abstract Neon App" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-pink-400 transition-colors">SynthWave Music</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Vue.js</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Reproductor musical con visualizador de audio en WebGL interactivo. Sincronización en la nube y modo offline.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-pink-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 3 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/10b981/ffffff?text=Dashboard" alt="Dashboard Analítico" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Dashboard Analítico</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Panel de control interactivo para visualización de datos empresariales. Creado con Angular y D3.js para gráficos dinámicos.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col fade-in" style="animation-delay: 0.5s;">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-sky-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sky-400 transition-colors">DataCore Admin</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Angular</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Panel de control B2B con gráficos interactivos D3.js, gestión de usuarios avanzada y exportación de reportes PDF.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-sky-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 4 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Blog+Personal" alt="Blog Personal" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Blog Minimalista</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Blog estático súper rápido generado con Next.js y Markdown. Optimizado para SEO y accesibilidad web.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col fade-in" style="animation-delay: 0.6s;">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-emerald-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Architecture Modern" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Lumina Estate</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Next.js</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Plataforma inmobiliaria de lujo. SEO ultrarrápido, recorridos virtuales 360° y sistema de citas integrado.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 5 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Chat+Realtime" alt="App de Chat" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Chat en Tiempo Real</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Aplicación de mensajería instantánea estilo WhatsApp web. Implementada usando WebSockets (Socket.io), React y Express.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-violet-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Abstract 3D" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-violet-400 transition-colors">Sphere 3D Exp.</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Three.js</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Landing page inmersiva con renderizado de modelos 3D en tiempo real, efectos de partículas y físicas en navegador.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-violet-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 6 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/ec4899/ffffff?text=Gestor+Tareas" alt="Gestor de Tareas" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Gestor de Tareas</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Herramienta de productividad tipo Kanban. Permite arrastrar y soltar tarjetas, asignar etiquetas y fechas límite.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-yellow-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" alt="Mobile App" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">TaskFlow App</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">React Native</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Aplicación móvil de gestión de tareas y pomodoro. Animaciones fluidas, notificaciones push y modo oscuro nativo.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-yellow-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 7 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/14b8a6/ffffff?text=Portfolio+3D" alt="Portfolio 3D" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Experiencia 3D Web</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Sitio web interactivo utilizando Three.js para renderizar modelos 3D en el navegador con un rendimiento de 60fps.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-red-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80" alt="Cyberpunk City" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-red-400 transition-colors">Neon City Game</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Phaser.js</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Juego web 2D de scroll lateral con estética cyberpunk. Implementación de motor de físicas y multijugador básico con Socket.io.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-red-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 8 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/f43f5e/ffffff?text=App+Recetas" alt="App de Recetas" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Recetario Social</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Red social para amantes de la cocina. Los usuarios pueden subir recetas, dar 'me gusta' y seguir a otros chefs aficionados.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-cyan-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Code Screens" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Dev Snippets API</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Node.js</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Backend RESTful para compartir fragmentos de código. Autenticación JWT, rate limiting y base de datos MongoDB optimizada.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 9 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/6366f1/ffffff?text=Crypto+Tracker" alt="Crypto Tracker" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Crypto Tracker</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Aplicación de seguimiento de criptomonedas. Muestra gráficos de precios históricos integrando la API de CoinGecko.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-fuchsia-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&w=800&q=80" alt="VR Tech" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-fuchsia-400 transition-colors">Metaverse Hub</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">WebXR</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Portal web de realidad virtual accesible desde navegadores Oculus. Galerías de arte inmersivas e interacción mediante mandos.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-fuchsia-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 10 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/84cc16/ffffff?text=Fitness+App" alt="Fitness App" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">App de Entrenamiento</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Aplicación móvil (React Native) para registrar rutinas de gimnasio, calcular PRs y visualizar el progreso semanal.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-blue-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Server Data" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Cloud Monitor</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">Python</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Herramienta CLI y Web para monitorizar la salud de servidores Linux. Despliegue mediante Docker y alertas por Telegram.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 11 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/06b6d4/ffffff?text=Agencia+Digital" alt="Landing Page Agencia" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Sitio Corporativo</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Landing page de alto rendimiento para una agencia de marketing. Diseño moderno con animaciones sutiles usando Framer Motion.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-orange-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80" alt="Dark Abstract" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">Crypto Tracker</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">SvelteKit</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Seguimiento de precios de criptomonedas en tiempo real vía WebSockets. Gráficos de velas con TradingView Lightweight Charts.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-orange-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Proyecto 12 -->
-                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                    <img src="https://placehold.co/600x400/3b82f6/ffffff?text=API+Rest" alt="API Rest" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">API RESTful (Backend)</h3>
-                        <p class="text-slate-600 text-sm mb-6 flex-grow">
-                            Microservicio desarrollado en Python (FastAPI) con autenticación JWT, base de datos PostgreSQL y despliegue en Docker.
+                <article class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-lime-500/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Workspace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow relative z-20">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-lime-400 transition-colors">Collab Space</h3>
+                            <span class="text-xs px-2 py-1 glass-card rounded text-slate-300">WebRTC</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Espacio de trabajo virtual para equipos remotos con videollamadas p2p integradas y pizarras colaborativas en vivo.
                         </p>
-                        <a href="#" class="inline-flex justify-center items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors w-full">
-                            Ver Proyecto
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white group-hover:text-lime-400 transition-colors">
+                            Ver Proyecto 
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
                 </article>
@@ -234,31 +398,30 @@
     </main>
 
     <!-- Footer -->
-    <footer id="contacto" class="bg-slate-900 text-white py-12 mt-auto">
+    <footer id="contacto" class="relative z-10 border-t border-white/10 bg-black/40 backdrop-blur-xl py-12 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-6 md:mb-0 text-center md:text-left">
-                <span class="text-2xl font-bold text-indigo-400">DevPortfolio</span>
-                <p class="mt-2 text-slate-400 text-sm">Construyendo el futuro de la web, un proyecto a la vez.</p>
+                <span class="text-3xl font-extrabold tracking-tighter">
+                    Dev<span class="text-gradient">Portfolio</span>
+                </span>
+                <p class="mt-3 text-slate-500 text-sm font-light max-w-xs">Creando el futuro web con diseño moderno y rendimiento extremo.</p>
             </div>
             
-            <div class="flex space-x-6">
-                <!-- Iconos sociales simulados -->
-                <a href="#" class="text-slate-400 hover:text-white transition-colors">
-                    <span class="sr-only">GitHub</span>
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-                    </svg>
+            <div class="flex gap-4">
+                <!-- Redes sociales estilizadas -->
+                <a href="#" class="p-3 glass-card rounded-full hover:text-sky-400 transition-colors hover:-translate-y-1">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
                 </a>
-                <a href="#" class="text-slate-400 hover:text-white transition-colors">
-                    <span class="sr-only">LinkedIn</span>
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
-                    </svg>
+                <a href="#" class="p-3 glass-card rounded-full hover:text-white transition-colors hover:-translate-y-1">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" class="p-3 glass-card rounded-full hover:text-indigo-400 transition-colors hover:-translate-y-1">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
-            &copy; 2026 DevPortfolio. Todos los derechos reservados.
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-white/5 text-center text-slate-600 text-sm">
+            &copy; 2026 DevPortfolio. Diseñado con pasión.
         </div>
     </footer>
 
